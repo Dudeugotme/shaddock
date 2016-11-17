@@ -30,6 +30,7 @@ class Image(object):
         docker_client = dockerapi.DockerApi(app_args,
                                             self.cfg['api_cfg'])
         self.docker_api = docker_client.api
+        print(self.cfg['path'])
 
     def build(self, nocache):
         for line in self.docker_api.build(path=self.cfg['path'],

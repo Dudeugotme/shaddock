@@ -105,6 +105,7 @@ class ModelDefinition(object):
                     service['cluster_hosts'] = cluster['hosts']
                 if 'images' in cluster:
                     service['img_dir'] = cluster['images']
+                    print(service['img_dir'])
                 if 'vars' in cluster:
                     service['cluster_vars'] = cluster['vars']
                 services_list.append(service)
@@ -178,7 +179,7 @@ class ModelDefinition(object):
         else:
             try:
                 svc_args['images_dir'] = os.path.join(
-                    os.path.dirname(template_file), service.get('img_dir'))
+                    os.path.dirname(template_file), service['images_dir'])
             except TypeError:
                 raise TemplateFileError(
                     "Cluster definition in {} is missing the images key. "
